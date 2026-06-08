@@ -2,7 +2,7 @@
 
 **THEIA — The Human Environment Intelligence Aperture**
 
-A self-contained UI computer-use plugin that gives an installed agent a visual
+A self-contained UI computer-use plugin that gives **Hermes Agent** a visual
 perception and control layer for Windows: screenshots, window focus, mouse,
 keyboard, drag/scroll gestures, pixel checks, and optional LocateAnything-3B
 visual UI grounding.
@@ -11,12 +11,131 @@ visual UI grounding.
 
 ## What it unlocks
 
-THEIA lets an agent operate GUI software the way a human does: see the screen,
-perceive the interface, pick a target, click/type/drag/scroll, verify what
-changed, and repeat. This is most useful when there is no clean API, no browser
-automation hook, or the workflow crosses multiple desktop applications.
+THEIA lets **Hermes Agent** operate GUI software the way a human does: see the
+screen, perceive the interface, pick a target, click/type/drag/scroll, verify
+what changed, and repeat. This is most useful when there is no clean API, no
+browser automation hook, or the workflow crosses multiple desktop applications.
 
 > **See the interface. Understand the environment. Act through the screen.**
+
+## How THEIA works with Hermes Agent
+
+Hermes Agent already has language reasoning, tool calling, skills, memory,
+file access, terminal access, web research, scheduled jobs, subagents, and
+optional messaging-platform access. THEIA adds the missing **visual interface
+aperture**: a way for Hermes Agent to perceive and operate normal Windows
+software through the same screen a human uses.
+
+In practice, THEIA contributes two things:
+
+1. **A UI computer-use toolset** — screenshot capture, active-window checks,
+   visual locating, mouse/keyboard actions, drag/scroll gestures, pixels, and
+   dry-run controls.
+2. **A bundled operator skill** — reusable guidance that teaches Hermes Agent
+   the safe loop for GUI work: `see → target → act → verify → repeat`.
+
+That means Hermes Agent can combine normal agent capabilities with desktop UI
+control. For example:
+
+| Hermes Agent capability | What THEIA adds | Combined result |
+|---|---|---|
+| Reasoning + planning | Screen perception and UI actions | Break a messy desktop workflow into verified steps |
+| Skills | Fresh-install UI operation guidance | Reuse safer GUI workflows across sessions |
+| Memory | User/app preferences | Remember preferred apps, workflows, and guardrails |
+| File tools | GUI export/import verification | Create or edit files, then confirm them in desktop apps |
+| Terminal tools | Dependency checks and local scripts | Install/diagnose prerequisites, then operate the UI |
+| Web/browser tools | Existing logged-in browser sessions | Use APIs/browser automation where possible, screen control where needed |
+| Cron jobs | Scheduled UI checks/actions | Run recurring local workflows that require a visible app |
+| Subagents | Parallel research/planning | Let one agent plan while another operates the desktop |
+
+THEIA is most valuable in the "messy middle" where APIs stop helping: legacy
+software, creative tools, vendor dashboards, admin consoles, apps with no SDK,
+local-only utilities, and workflows that cross several windows.
+
+## Example workflows
+
+### Operate software with no API
+
+Hermes Agent can use THEIA to open an app, inspect the screen, find the right
+button or field, act, and verify the result. This is useful for internal tools,
+legacy enterprise apps, installers, desktop utilities, and line-of-business
+software that only exposes a GUI.
+
+### Use the user's already-logged-in apps
+
+If the user is already logged into a browser, dashboard, or desktop app, Hermes
+Agent can work in that existing session instead of asking for new credentials or
+requiring an API token. The agent can focus the window, navigate, click, type,
+and verify visible outcomes.
+
+### Combine research with UI execution
+
+Hermes Agent can research instructions or documentation with web tools, write a
+step-by-step plan, then use THEIA to carry out the GUI portions on the desktop.
+For example: read setup docs, open an installer, choose options, verify the app
+launches, and save a summary.
+
+### Turn one-off UI work into reusable skills
+
+After Hermes Agent successfully completes a complex GUI workflow, it can save a
+skill describing the reliable steps and pitfalls. THEIA provides the screen
+interaction layer; Hermes Agent's skill system turns the experience into a
+repeatable operating procedure.
+
+### Verify outcomes instead of trusting clicks
+
+THEIA encourages Hermes Agent to prove each milestone: capture a fresh
+screenshot, check the active window, inspect a pixel/toggle state, or verify an
+output file. This makes GUI automation less brittle than blind click scripts.
+
+## Private UI computer use
+
+THEIA can be used for **completely private local UI computer use** when paired
+with a local/private Hermes Agent setup.
+
+The plugin itself runs on the Windows machine and controls the local desktop
+with local Python libraries such as PyAutoGUI and Pillow. Basic mode does not
+require cloud visual grounding, remote browser sessions, or third-party UI
+automation services.
+
+For private operation:
+
+1. Run Hermes Agent locally on the Windows machine.
+2. Use a local or private model/provider for Hermes Agent if prompts and screen
+   descriptions must stay private.
+3. Keep THEIA in **basic mode** for local screenshots, mouse, keyboard, window,
+   pixel, and verification tools.
+4. If visual grounding is needed, run LocateAnything through the isolated local
+   worker instead of a hosted vision service.
+5. Disable toolsets you do not want in the session, such as web, browser,
+   image generation, or messaging tools.
+6. Avoid sending screenshots or sensitive UI text to cloud models unless your
+   chosen model/provider and policies allow it.
+
+Useful privacy-oriented commands:
+
+```powershell
+hermes tools enable windows_computer_use
+hermes tools disable web
+hermes tools disable browser
+hermes tools disable image_gen
+hermes tools disable messaging
+```
+
+Then start a fresh Hermes Agent session so tool changes take effect.
+
+For maximum privacy, use:
+
+- a local Hermes Agent profile,
+- local/private model inference,
+- THEIA basic mode or local external LocateAnything worker,
+- no web/browser/messaging toolsets unless explicitly needed,
+- dry-run mode for demonstrations or audits before live control.
+
+```text
+computer_use_set_dry_run(true)   # inspect intended actions without acting
+computer_use_set_dry_run(false)  # enable live local desktop control
+```
 
 ## Install from GitHub
 
