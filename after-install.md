@@ -1,4 +1,6 @@
-# Windows Computer Use installed
+# THEIA Computer Use installed
+
+**THEIA — The Human Environment Intelligence Aperture** is installed.
 
 Next steps:
 

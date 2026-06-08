@@ -1,22 +1,24 @@
-# Hermes Windows Computer Use Plugin
+# THEIA Computer Use
 
-A self-contained Hermes Agent plugin that adds a `windows_computer_use`
-toolset for Windows desktop automation: screenshots, window focus, mouse,
+**THEIA — The Human Environment Intelligence Aperture**
+
+A self-contained UI computer-use plugin that gives an installed agent a visual
+perception and control layer for Windows: screenshots, window focus, mouse,
 keyboard, drag/scroll gestures, pixel checks, and optional LocateAnything-3B
 visual UI grounding.
 
-![Windows Computer Use infographic](assets/windows-computer-use-infographic.png)
+![THEIA Computer Use infographic](assets/windows-computer-use-infographic.png)
 
 ## What it unlocks
 
-Hermes can operate GUI software the way a human does: see the screen, pick a
-target, click/type/drag/scroll, verify what changed, and repeat. This is most
-useful when there is no clean API, no browser automation hook, or the workflow
-crosses multiple desktop applications.
+THEIA lets an agent operate GUI software the way a human does: see the screen,
+perceive the interface, pick a target, click/type/drag/scroll, verify what
+changed, and repeat. This is most useful when there is no clean API, no browser
+automation hook, or the workflow crosses multiple desktop applications.
+
+> **See the interface. Understand the environment. Act through the screen.**
 
 ## Install from GitHub
-
-Once this repo is published:
 
 ```powershell
 hermes plugins install https://github.com/TREE-Ind/Hermes-Agent-UI-Computer-Use-Plugin.git --enable

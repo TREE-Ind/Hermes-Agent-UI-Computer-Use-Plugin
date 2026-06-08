@@ -1,9 +1,9 @@
 ---
 name: windows-computer-use
 description: |
-  Windows desktop automation — capture the screen, locate UI elements, click,
-  type, drag, scroll, verify state, and optionally use LocateAnything-3B visual
-  grounding through the hermes-windows-computer-use plugin.
+  THEIA — The Human Environment Intelligence Aperture. Windows UI perception
+  and computer use: capture the screen, locate UI elements, click, type, drag,
+  scroll, verify state, and optionally use LocateAnything-3B visual grounding.
 version: 1.1.0
 platforms: [windows]
 metadata:
@@ -13,15 +13,17 @@ metadata:
     related_skills: [hermes-agent]
 ---
 
-# Windows Computer Use
+# THEIA Computer Use
 
-Use this skill when Hermes needs to operate the Windows desktop through the
-`windows_computer_use` toolset installed by the `hermes-windows-computer-use`
-plugin.
+**THEIA — The Human Environment Intelligence Aperture**
+
+Use this skill when an agent needs visual perception and control of the Windows
+desktop through the `windows_computer_use` toolset installed by the
+`hermes-windows-computer-use` plugin.
 
 This skill is written for fresh installs and normal end users. It focuses on
-safe, repeatable GUI operation rather than the project-specific test workflows
-used while the toolset was being built.
+safe, repeatable GUI operation: see the interface, understand the environment,
+act through the screen, and verify the result.
 
 ## Core rule
 
