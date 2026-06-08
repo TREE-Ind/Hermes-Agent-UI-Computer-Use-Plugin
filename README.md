@@ -5,6 +5,8 @@ toolset for Windows desktop automation: screenshots, window focus, mouse,
 keyboard, drag/scroll gestures, pixel checks, and optional LocateAnything-3B
 visual UI grounding.
 
+![Windows Computer Use infographic](assets/windows-computer-use-infographic.png)
+
 ## What it unlocks
 
 Hermes can operate GUI software the way a human does: see the screen, pick a
@@ -17,7 +19,7 @@ crosses multiple desktop applications.
 Once this repo is published:
 
 ```powershell
-hermes plugins install owner/hermes-windows-computer-use --enable
+hermes plugins install https://github.com/TREE-Ind/Hermes-Agent-UI-Computer-Use-Plugin.git --enable
 hermes tools enable windows_computer_use
 hermes skills list
 ```
