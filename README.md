@@ -164,8 +164,9 @@ Basic mode supports screenshots, active-window checks, pixel checks, and live
 mouse/keyboard actions.
 
 Current Hermes Agent plugin installs read THEIA's `pip_dependencies` metadata
-from `plugin.yaml` and install the lightweight basic dependencies into the
-Python environment currently running Hermes Agent. THEIA also keeps a small
+from `plugin.yaml` and/or the top-level `requirements.txt`, then install the
+lightweight basic dependencies into the Python environment currently running
+Hermes Agent. THEIA also keeps a small
 best-effort dependency check on first plugin load as a fallback for older Hermes
 Agent builds or blocked installs.
 
@@ -174,6 +175,7 @@ Installed automatically when missing:
 - `pyautogui`
 - `pillow`
 - `pygetwindow`
+- `python3-xlib` on Linux only
 - `pywin32` on Windows only
 
 Opt out for audited or air-gapped environments:
@@ -185,7 +187,7 @@ setx THEIA_AUTO_INSTALL_BASIC_DEPS false
 Manual fallback from the installed plugin directory:
 
 ```powershell
-python -m pip install -r requirements-basic.txt
+python -m pip install -r requirements.txt
 ```
 
 ### LocateAnything mode: automatic, default, and isolated

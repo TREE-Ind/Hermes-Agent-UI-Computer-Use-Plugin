@@ -49,7 +49,16 @@ def test_manifest_advertises_cross_platform_pyautogui_support():
 
     assert {"windows", "macos", "linux"}.issubset(set(manifest["platforms"]))
     assert "pyautogui>=0.9.54" in manifest["pip_dependencies"]
+    assert "python3-xlib>=0.15; platform_system == 'Linux'" in manifest["pip_dependencies"]
     assert "pywin32>=306; platform_system == 'Windows'" in manifest["pip_dependencies"]
+
+def test_top_level_requirements_for_older_plugin_installers():
+    requirements = (ROOT / "requirements.txt").read_text(encoding="utf-8")
+    basic = (ROOT / "requirements-basic.txt").read_text(encoding="utf-8")
+
+    assert "-r requirements-basic.txt" in requirements
+    assert "pyautogui>=0.9.54" in basic
+    assert "python3-xlib" in basic
 
 def test_manifest_declares_official_plugin_surfaces():
     manifest = yaml.safe_load((ROOT / "plugin.yaml").read_text(encoding="utf-8"))
@@ -144,6 +153,24 @@ def test_basic_dependency_auto_install_uses_uv_when_missing(monkeypatch):
     assert calls[0][:3] == ["uv", "pip", "install"]
     assert "--python" in calls[0]
     assert "requirements-basic.txt" in calls[0][-1]
+
+def test_basic_dependency_auto_install_uses_user_site_for_system_python(monkeypatch):
+    module = load_plugin_module("hermes_windows_computer_use_plugin_user_site_fallback")
+    calls = []
+
+    monkeypatch.setattr(module, "_missing_basic_dependencies", lambda: ["pyautogui"])
+    monkeypatch.setattr(module.shutil, "which", lambda name: None)
+    monkeypatch.setattr(module.sys, "prefix", "same-prefix", raising=False)
+    monkeypatch.setattr(module.sys, "base_prefix", "same-prefix", raising=False)
+
+    def fake_run(command, **kwargs):
+        calls.append(command)
+        return subprocess.CompletedProcess(command, 1 if "--user" not in command else 0, stdout="", stderr="denied")
+
+    monkeypatch.setattr(module.subprocess, "run", fake_run)
+    module._install_basic_dependencies_if_missing()
+
+    assert any("--user" in command for command in calls)
 
 def test_basic_dependency_auto_install_respects_opt_out(monkeypatch):
     module = load_plugin_module("hermes_windows_computer_use_plugin_auto_install_opt_out")

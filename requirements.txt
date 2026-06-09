@@ -1,0 +1,5 @@
+# Lightweight THEIA desktop-control dependencies installed into the Hermes Agent
+# Python environment by Hermes plugin installers that scan top-level
+# requirements.txt. Heavy LocateAnything/Torch dependencies stay in the isolated
+# worker venv managed by scripts/setup_locate_worker.py.
+-r requirements-basic.txt

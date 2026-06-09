@@ -19,6 +19,8 @@ _BASIC_DEPENDENCY_MODULES = {
     "PIL": "pillow",
     "pygetwindow": "pygetwindow",
 }
+if sys.platform.startswith("linux"):
+    _BASIC_DEPENDENCY_MODULES["Xlib"] = "python3-xlib"
 if os.name == "nt":
     _BASIC_DEPENDENCY_MODULES["win32gui"] = "pywin32"
 
@@ -58,9 +60,12 @@ def _install_basic_dependencies_if_missing() -> None:
 
     commands: list[list[str]] = []
     uv = shutil.which("uv")
+    in_venv = sys.prefix != getattr(sys, "base_prefix", sys.prefix)
     if uv:
         commands.append([uv, "pip", "install", "--python", sys.executable, "-r", str(requirements)])
     commands.append([sys.executable, "-m", "pip", "install", "-r", str(requirements)])
+    if not in_venv:
+        commands.append([sys.executable, "-m", "pip", "install", "--user", "-r", str(requirements)])
 
     last_error = ""
     for command in commands:
@@ -82,7 +87,7 @@ def _install_basic_dependencies_if_missing() -> None:
     print(
         "[THEIA] Basic dependency auto-install failed. "
         f"Missing: {', '.join(missing)}. "
-        "Run `python -m pip install -r requirements-basic.txt` from the plugin "
+        "Run `python -m pip install --user -r requirements.txt` from the plugin "
         f"directory. Last error: {last_error}",
         file=sys.stderr,
     )

@@ -38,9 +38,12 @@ def install_basic_requirements() -> tuple[bool, str]:
         return False, f"missing {req}"
     commands = []
     uv = shutil.which("uv")
+    in_venv = sys.prefix != getattr(sys, "base_prefix", sys.prefix)
     if uv:
         commands.append([uv, "pip", "install", "--python", sys.executable, "-r", str(req)])
     commands.append([sys.executable, "-m", "pip", "install", "-r", str(req)])
+    if not in_venv:
+        commands.append([sys.executable, "-m", "pip", "install", "--user", "-r", str(req)])
     last = ""
     for command in commands:
         try:

@@ -13,18 +13,18 @@
     },
     {
       "path": "README.md",
-      "bytes": 12096,
-      "sha256": "cece6d72d592e430011dfeb7e8d12d599efa7f9e7eacbe259496c7641e63ee5e"
+      "bytes": 12165,
+      "sha256": "76d2bbd5aaaa45fd80cf62223bc7774d24427328c7d0429c8d09a4f2921feffb"
     },
     {
       "path": "__init__.py",
-      "bytes": 7004,
-      "sha256": "92af6a10529e3bc2d034335d13664f0acf5290df70c078117f41396e3546c5ee"
+      "bytes": 7291,
+      "sha256": "20509e04fa5ac50eca7fac033db4872bcaaf52e3fb2a00507cc14a1b5af06e09"
     },
     {
       "path": "after-install.md",
-      "bytes": 1409,
-      "sha256": "2e97aec7288d12e53d58ee14200b7258c1fc8bd80386ea770647bb99472bba56"
+      "bytes": 1909,
+      "sha256": "d50e124555cc0ae01e177042ee00f20e5e5439105471504fb330ad4929498ce2"
     },
     {
       "path": "assets/windows-computer-use-infographic.png",
@@ -38,8 +38,8 @@
     },
     {
       "path": "plugin.yaml",
-      "bytes": 1313,
-      "sha256": "0aeced37a5532d85b2f374455386d6940921ce39c16f5a48cde47fded000ac2e"
+      "bytes": 1367,
+      "sha256": "7b5d826ea2f5f142d4e675a0beb073e4ed44a64537361ebe88652d7e57048601"
     },
     {
       "path": "pyproject.toml",
@@ -48,8 +48,8 @@
     },
     {
       "path": "requirements-basic.txt",
-      "bytes": 179,
-      "sha256": "c11f39b518ff45bc230a1c137b0f58d4d5f304b010339d62c765e10d09aff47c"
+      "bytes": 227,
+      "sha256": "02e8ce38df50a3a46bdc2d67c6b0dc7f272117dbea67b00ccd850f2474b8f5dc"
     },
     {
       "path": "requirements-locate.txt",
@@ -57,9 +57,14 @@
       "sha256": "a22815060ce6b35ef0b75adf0552a52fbd9d1ccccb7e5aeb784e432d9d1e3582"
     },
     {
+      "path": "requirements.txt",
+      "bytes": 314,
+      "sha256": "7260a5b17754cab915c7a51285d63d34255f69e8c9d56ea4d2e58d885cafb653"
+    },
+    {
       "path": "scripts/doctor.py",
-      "bytes": 5738,
-      "sha256": "03c19cfcd0827dbfc98c92b01e5b56715695b9ce60d3d950098562050af3d653"
+      "bytes": 5921,
+      "sha256": "9d09f25357e17e306c6e8b481938b256818282a9a0354e334137ace398f61964"
     },
     {
       "path": "scripts/install_basic.ps1",
@@ -133,8 +138,8 @@
     },
     {
       "path": "tests/test_plugin_registration.py",
-      "bytes": 6233,
-      "sha256": "905cd055cefc96fd80db7b9712b4c5d7ad7e69a2781b5584e03b1ed254a0451a"
+      "bytes": 7554,
+      "sha256": "310f11a9e7d09d656ff0192e41d0f022e03a9431523c01b43f2149630734466b"
     },
     {
       "path": "windows_computer_use.py",
